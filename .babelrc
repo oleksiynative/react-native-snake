@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "extensions": [".js", ".ts"],
+        "root": ["./src"],
+        "alias": {
+          "assets": "./src/assets",
+          "components": "./src/components",
+          "modules": "./src/modules",
+          "types": "./src/types",
+          "utils": "./src/utils",
+          "views": "./src/views"
+        }
+      }
+    ]
+  ]
+}
