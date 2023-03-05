@@ -5,13 +5,30 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest --testMatch=\"**/__tests__/**/!(*e2e.js)\"",
+    "android:assembleRelease": "cd ./android && ./gradlew bumperVersionMinor && ./gradlew assembleRelease && open ./app/build/outputs ",
+    "fastFixIOS": "cd ios && rm -rf Podfile.lock && pod install && cd ../",
+    "fastFixAndroid": "cd android &&./gradlew clean && cd ../",
+    "clearAll": "rm -rf node_modules && watchman watch-del-all && npm install",
+    "cacheClean": "watchman watch-del-all && sudo npm cache clean --force",
+    "cleanStart": "npm start --reset-cache",
+    "bumpAndroidMajorVersion": "./gradlew bumperVersionMajor",
+    "bumpAndroidMinorVersion": "./gradlew bumperVersionMinor",
+    "buildTs": "tsc",
+    "postinstall": "npx pod-install",
+    "lint": "tsc --noEmit && eslint --fix. --ext .js,.jsx,.ts,.tsx ./",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": "eslint --fix"
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-native": "0.71.3"
+    "react-native": "0.71.3",
+    "react-native-gesture-handler": "^2.9.0",
+    "react-native-safe-area-context": "^4.5.0",
+    "react-native-svg": "^13.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -29,6 +46,7 @@
     "jest": "^29.2.1",
     "metro-react-native-babel-preset": "0.73.7",
     "prettier": "^2.4.1",
+    "react-native-svg-transformer": "^1.0.0",
     "react-test-renderer": "18.2.0",
     "typescript": "4.8.4"
   },

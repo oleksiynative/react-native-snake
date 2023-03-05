@@ -95,7 +95,7 @@ android {
 
     namespace "com.snake"
     defaultConfig {
-        applicationId "com.snake"
+        applicationId 'mark.miller.snake'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
